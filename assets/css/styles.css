@@ -22,12 +22,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: 132px;
 }
 
 body {
   font-family: "Cairo", sans-serif;
-  padding-top: 88px;
+  padding-top: 118px;
   background:
     radial-gradient(circle at top, rgba(200, 160, 32, 0.06), transparent 22%),
     linear-gradient(180deg, #101010 0%, #0d0d0d 100%);
@@ -70,7 +70,7 @@ nav {
 }
 
 .logo-img {
-  height: 204px;
+  height: 168px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -89,11 +89,45 @@ nav {
 }
 
 .nav-links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  min-height: 52px;
   color: #c5c5c5;
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.1;
   transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-ar,
+.nav-en,
+.btn-ar,
+.btn-en,
+.hero-badge-en,
+.stat-en,
+.card-en,
+.filter-en,
+.info-en,
+.section-en,
+.form-en {
+  display: block;
+}
+
+.nav-ar {
+  line-height: 1.1;
+}
+
+.nav-en {
+  margin-top: 2px;
+  color: #8d8d8d;
+  font-size: 9.5px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -103,8 +137,9 @@ nav {
 .nav-cta {
   background: var(--gold) !important;
   color: #111 !important;
-  padding: 10px 20px;
-  border-radius: 6px;
+  min-width: 116px !important;
+  padding: 11px 18px;
+  border-radius: 10px;
   font-weight: 800 !important;
   box-shadow: 0 10px 24px rgba(200, 160, 32, 0.18);
 }
@@ -168,6 +203,14 @@ nav {
   animation: fU 0.8s ease both;
 }
 
+.hero-badge-en {
+  margin-top: 2px;
+  color: #d1b154;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
 .dot {
   width: 7px;
   height: 7px;
@@ -227,6 +270,20 @@ nav {
   animation: fU 0.8s 0.38s ease both;
 }
 
+.en-copy {
+  display: block;
+  color: #8e8e8e;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 8px;
+  direction: ltr;
+  text-align: left;
+}
+
+.hero-en {
+  max-width: 520px;
+}
+
 .hero-btns {
   display: flex;
   flex-wrap: wrap;
@@ -263,6 +320,14 @@ nav {
   color: #fff;
   font-weight: 700;
   background: rgba(255, 255, 255, 0.02);
+}
+
+.btn-en {
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.78;
 }
 
 .btn-gh:hover {
@@ -330,6 +395,14 @@ nav {
   font-size: 12px;
 }
 
+.stat-en {
+  margin-top: 3px;
+  color: #7f7f7f;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
 @keyframes fU {
   from {
     opacity: 0;
@@ -391,6 +464,12 @@ nav {
   line-height: 1.9;
 }
 
+.section-en {
+  max-width: 720px;
+  margin: 10px auto 0;
+  text-align: center;
+}
+
 #about,
 #services,
 #projects,
@@ -399,7 +478,7 @@ nav {
 #contact {
   position: relative;
   padding: 108px 0;
-  scroll-margin-top: 110px;
+  scroll-margin-top: 132px;
 }
 
 #about,
@@ -568,6 +647,14 @@ nav {
   font-weight: 600;
 }
 
+.info-en {
+  margin-top: 6px;
+  color: #818181;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
 .vmg {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -702,6 +789,15 @@ nav {
   margin-bottom: 10px;
 }
 
+.card-en {
+  margin-top: 4px;
+  color: #8b8b8b;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
 .svcb p {
   color: #a6a6a6;
   font-size: 13.5px;
@@ -787,6 +883,15 @@ nav {
   border-color: var(--gold);
   font-weight: 800;
   transform: translateY(-1px);
+}
+
+.filter-en {
+  margin-top: 3px;
+  color: inherit;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  opacity: 0.78;
 }
 
 .gcnt {
@@ -1048,6 +1153,17 @@ nav {
   margin-bottom: 4px;
 }
 
+.an-en {
+  display: block;
+  margin-top: 4px;
+  color: #8f8f8f;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  direction: ltr;
+}
+
 .anode .ar2 {
   display: block;
   color: var(--gold);
@@ -1129,6 +1245,10 @@ nav {
   font-weight: 800;
   margin-bottom: 22px;
   text-align: center;
+}
+
+.form-en {
+  margin-top: 4px;
 }
 
 .fg {
@@ -1342,7 +1462,7 @@ footer {
   }
 
   .logo-img {
-    height: 126px;
+    height: 104px;
   }
 
   .nav-links {
@@ -1363,6 +1483,13 @@ footer {
   .nav-links a {
     white-space: nowrap;
     font-size: 12px;
+    min-width: max-content;
+    min-height: 48px;
+    padding-inline: 4px;
+  }
+
+  .nav-en {
+    font-size: 8.5px;
   }
 
   .nav-cta {
@@ -1386,6 +1513,13 @@ footer {
   .hero-badge {
     margin-inline: auto;
     font-size: 12px;
+  }
+
+  .hero-badge-en,
+  .en-copy,
+  .section-en {
+    text-align: center;
+    direction: ltr;
   }
 
   .hero h1 {
@@ -1496,7 +1630,7 @@ footer {
   }
 
   .logo-img {
-    height: 98px;
+    height: 84px;
   }
 
   .hero {
