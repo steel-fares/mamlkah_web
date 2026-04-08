@@ -1579,36 +1579,44 @@ footer {
 }
 
 @media (max-width: 960px) {
+  body {
+    padding-top: 124px;
+  }
+
+  html {
+    scroll-padding-top: 134px;
+  }
+
   nav {
     height: auto;
-    padding: 12px 16px 14px;
+    padding: 10px 14px 12px;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     direction: rtl;
   }
 
   .nav-right {
     width: 100%;
     align-items: stretch;
-    gap: 12px;
+    gap: 8px;
   }
 
   .logo {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .logo-img {
-    height: 104px;
+    height: 58px;
   }
 
   .nav-links {
     width: 100%;
     justify-content: flex-start;
     overflow-x: auto;
-    gap: 10px;
-    padding: 0 2px 2px;
+    gap: 6px;
+    padding: 0 0 4px;
     scrollbar-width: none;
     flex-wrap: nowrap;
     margin-inline-start: 0;
@@ -1617,6 +1625,7 @@ footer {
   .lang-switch {
     width: 100%;
     justify-content: flex-end;
+    gap: 6px;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -1625,18 +1634,26 @@ footer {
 
   .nav-links a {
     white-space: nowrap;
-    font-size: 12px;
-    min-width: max-content;
-    min-height: 48px;
-    padding-inline: 4px;
+    font-size: 11px;
+    min-width: 76px;
+    min-height: 42px;
+    padding: 6px 10px;
   }
 
   .nav-en {
-    font-size: 8.5px;
+    display: none;
   }
 
   .nav-cta {
-    padding: 8px 14px;
+    min-width: 108px !important;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  .lang-btn {
+    min-width: 96px;
+    padding: 7px 14px;
+    font-size: 11px;
   }
 
   .hero {
@@ -1649,13 +1666,16 @@ footer {
   }
 
   .hero-content {
-    padding: 164px 22px 210px;
+    padding: 92px 20px 196px;
     text-align: center;
   }
 
   .hero-badge {
     margin-inline: auto;
     font-size: 12px;
+    padding: 6px 12px;
+    max-width: min(100%, 320px);
+    justify-content: center;
   }
 
   .hero-badge-en,
@@ -1684,11 +1704,12 @@ footer {
   }
 
   .hero h1 {
-    font-size: clamp(38px, 12vw, 66px);
+    font-size: clamp(34px, 11vw, 54px);
   }
 
   .hero .hsub {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    font-size: 14px;
   }
 
   .hero-line {
@@ -1697,24 +1718,28 @@ footer {
 
   .hero-p {
     max-width: 100%;
-    margin: 0 auto 24px;
-    font-size: 15px;
+    margin: 0 auto 18px;
+    font-size: 14px;
+    line-height: 1.8;
   }
 
   .hero-btns {
     width: 100%;
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn-gold,
   .btn-gh {
     width: 100%;
+    min-width: 0;
+    padding: 13px 18px;
   }
 
   .hstrip {
     left: 18px;
     right: 18px;
-    bottom: 134px;
+    bottom: 120px;
     justify-content: center;
     overflow-x: auto;
     scrollbar-width: none;
@@ -1732,8 +1757,8 @@ footer {
 
   .hstats {
     flex-direction: column;
-    gap: 10px;
-    padding: 14px 16px;
+    gap: 8px;
+    padding: 12px 14px;
     background: rgba(13, 13, 13, 0.84);
   }
 
@@ -1777,6 +1802,14 @@ footer {
 }
 
 @media (max-width: 560px) {
+  body {
+    padding-top: 116px;
+  }
+
+  html {
+    scroll-padding-top: 126px;
+  }
+
   #about,
   #services,
   #projects,
@@ -1791,16 +1824,18 @@ footer {
   }
 
   .logo-img {
-    height: 84px;
+    height: 50px;
   }
 
   .lang-switch {
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .lang-btn {
-    flex: 1 1 0;
-    max-width: 140px;
+    flex: 0 0 auto;
+    min-width: 88px;
+    max-width: none;
+    padding: 6px 12px;
   }
 
   .hero {
@@ -1808,7 +1843,7 @@ footer {
   }
 
   .hero-content {
-    padding: 152px 18px 198px;
+    padding: 84px 18px 190px;
   }
 
   .hero-badge {
@@ -1818,15 +1853,15 @@ footer {
   }
 
   .hero h1 {
-    font-size: clamp(34px, 14vw, 54px);
+    font-size: clamp(30px, 13vw, 46px);
   }
 
   .hero-p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .hstrip {
-    bottom: 152px;
+    bottom: 112px;
   }
 
   .hthumb {
@@ -1840,6 +1875,17 @@ footer {
 
   .stt .l {
     font-size: 11px;
+  }
+
+  .nav-links a {
+    min-width: 70px;
+    min-height: 38px;
+    font-size: 10.5px;
+    padding: 6px 8px;
+  }
+
+  .nav-cta {
+    min-width: 96px !important;
   }
 
   .svcg,
