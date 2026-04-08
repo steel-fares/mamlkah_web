@@ -60,6 +60,14 @@ nav {
   transition: background 0.25s ease, border-color 0.25s ease;
 }
 
+.nav-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-inline-start: auto;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -77,6 +85,33 @@ nav {
   filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.3));
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-btn {
+  border: 1px solid rgba(200, 160, 32, 0.24);
+  background: rgba(255, 255, 255, 0.035);
+  color: #d4d4d4;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-family: "Cairo", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+  background: var(--gold);
+  color: #111;
+  border-color: var(--gold);
+  box-shadow: 0 10px 22px rgba(200, 160, 32, 0.2);
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -85,7 +120,7 @@ nav {
   flex-wrap: wrap;
   row-gap: 8px;
   direction: rtl;
-  margin-inline-start: auto;
+  margin-inline-start: 0;
 }
 
 .nav-links a {
@@ -107,6 +142,8 @@ nav {
 .nav-en,
 .btn-ar,
 .btn-en,
+.lang-ar-only,
+.lang-en-only,
 .hero-badge-en,
 .stat-en,
 .card-en,
@@ -115,6 +152,101 @@ nav {
 .section-en,
 .form-en {
   display: block;
+}
+
+body.lang-ar .lang-en-only,
+body.lang-ar .nav-en,
+body.lang-ar .btn-en,
+body.lang-ar .pen,
+body.lang-ar .hero-badge-en,
+body.lang-ar .stat-en,
+body.lang-ar .card-en,
+body.lang-ar .filter-en,
+body.lang-ar .info-en,
+body.lang-ar .section-en,
+body.lang-ar .form-en,
+body.lang-ar .en-copy,
+body.lang-ar .an-en,
+body.lang-ar .ae,
+body.lang-ar .le,
+body.lang-ar .se,
+body.lang-ar .sl,
+body.lang-ar .vsub {
+  display: none !important;
+}
+
+body.lang-en .lang-ar-only,
+body.lang-en .nav-ar,
+body.lang-en .btn-ar,
+body.lang-en .pen,
+body.lang-en .ar2,
+body.lang-en .il,
+body.lang-en .cl,
+body.lang-en .la,
+body.lang-en .ar-copy {
+  display: none !important;
+}
+
+body.lang-en .lang-en-only,
+body.lang-en .nav-en,
+body.lang-en .btn-en,
+body.lang-en .hero-badge-en,
+body.lang-en .stat-en,
+body.lang-en .card-en,
+body.lang-en .filter-en,
+body.lang-en .info-en,
+body.lang-en .section-en,
+body.lang-en .form-en,
+body.lang-en .en-copy,
+body.lang-en .an-en,
+body.lang-en .ae,
+body.lang-en .le,
+body.lang-en .se,
+body.lang-en .sl,
+body.lang-en .vsub {
+  display: block !important;
+}
+
+body.lang-en {
+  direction: rtl;
+}
+
+body.lang-en nav {
+  direction: ltr;
+}
+
+body.lang-en .nav-links {
+  direction: ltr;
+}
+
+body.lang-en .hero-content,
+body.lang-en .atxt,
+body.lang-en .sh,
+body.lang-en .vmc,
+body.lang-en .pinfo,
+body.lang-en .reveal,
+body.lang-en .cform,
+body.lang-en footer,
+body.lang-en .fbot,
+body.lang-en .ic,
+body.lang-en .ic2,
+body.lang-en .ci {
+  text-align: left;
+}
+
+body.lang-en .hero-badge,
+body.lang-en .hero-btns,
+body.lang-en .aquote,
+body.lang-en .ctg,
+body.lang-en .fw,
+body.lang-en .adg {
+  direction: ltr;
+}
+
+body.lang-en .hero-line,
+body.lang-en .sdiv {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .nav-ar {
@@ -1456,6 +1588,12 @@ footer {
     direction: rtl;
   }
 
+  .nav-right {
+    width: 100%;
+    align-items: stretch;
+    gap: 12px;
+  }
+
   .logo {
     width: 100%;
     justify-content: center;
@@ -1474,6 +1612,11 @@ footer {
     scrollbar-width: none;
     flex-wrap: nowrap;
     margin-inline-start: 0;
+  }
+
+  .lang-switch {
+    width: 100%;
+    justify-content: flex-end;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -1520,6 +1663,24 @@ footer {
   .section-en {
     text-align: center;
     direction: ltr;
+  }
+
+  body.lang-en .hero-content,
+  body.lang-en .sh,
+  body.lang-en .vmc,
+  body.lang-en .pinfo,
+  body.lang-en .cform,
+  body.lang-en footer,
+  body.lang-en .fbot,
+  body.lang-en .ic,
+  body.lang-en .ic2,
+  body.lang-en .ci {
+    text-align: center;
+  }
+
+  body.lang-en .hero-line,
+  body.lang-en .sdiv {
+    margin-inline: auto;
   }
 
   .hero h1 {
@@ -1631,6 +1792,15 @@ footer {
 
   .logo-img {
     height: 84px;
+  }
+
+  .lang-switch {
+    justify-content: center;
+  }
+
+  .lang-btn {
+    flex: 1 1 0;
+    max-width: 140px;
   }
 
   .hero {

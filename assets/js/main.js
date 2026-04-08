@@ -1,181 +1,259 @@
-const hs = [
+const heroImages = [
   "assets/images/site/site-image-001.jpg",
   "assets/images/site/site-image-002.jpg",
   "assets/images/site/site-image-003.jpg",
 ];
 
-const hBg = document.getElementById("heroBg");
+const body = document.body;
+const html = document.documentElement;
+const navbar = document.getElementById("navbar");
+const heroBg = document.getElementById("heroBg");
+const langButtons = document.querySelectorAll(".lang-btn");
+const galleryCount = document.querySelector(".gcnt");
+const galleryItems = [...document.querySelectorAll(".gitem")];
+const filterButtons = [...document.querySelectorAll(".fb")];
 
-function setHero(el, i) {
-  hBg.style.backgroundImage = `url("${hs[i]}")`;
-  document.querySelectorAll(".hthumb").forEach((t, j) => {
-    t.classList.toggle("active", j === i);
-  });
-}
-
-const ro = new IntersectionObserver(
-  entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add("visible"), i * 65);
-        ro.unobserve(e.target);
-      }
-    });
-  },
-  { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-);
-
-document.querySelectorAll(".reveal").forEach(el => ro.observe(el));
-
-window.addEventListener("scroll", () => {
-  document.getElementById("navbar").style.background =
-    window.scrollY > 60 ? "rgba(13,13,13,0.99)" : "rgba(13,13,13,0.96)";
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute("href"));
-    if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-});
-
-const projects = [
-  { src: "assets/images/site/site-image-002.jpg", name: "فيلا سكنية حديثة – السيب", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-004.jpg", name: "فيلا سكنية فاخرة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-005.jpg", name: "فيلا عصرية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-003.jpg", name: "فيلا راقية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-006.jpg", name: "فيلا سكنية – مسقط", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-007.jpg", name: "مجمع سكني", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-008.jpg", name: "فيلا كلاسيكية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-009.jpg", name: "فيلا بيضاء", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-010.jpg", name: "فيلا حديثة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-011.jpg", name: "فيلا خاصة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-012.jpg", name: "فيلا كبيرة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-013.jpg", name: "فيلا – الشرقية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-014.jpg", name: "فيلا سكنية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-015.jpg", name: "فيلا مميزة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-016.jpg", name: "فيلا مع تشطيب كامل", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-017.jpg", name: "فيلا – زاوية جوية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-018.jpg", name: "فيلا جبلية", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-019.jpg", name: "فيلا مكتملة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-020.jpg", name: "فيلا – السيب", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-021.jpg", name: "فيلا – واجهة", type: "فلل سكنية" },
-  { src: "assets/images/site/site-image-022.jpg", name: "مجمع سكني – منظر جوي", type: "منظر جوي" },
-  { src: "assets/images/site/site-image-023.jpg", name: "مشروع – منظر جوي", type: "منظر جوي" },
-  { src: "assets/images/site/site-image-024.jpg", name: "منظر جوي", type: "منظر جوي" },
-  { src: "assets/images/site/site-image-025.jpg", name: "فيلا قيد الإنشاء", type: "قيد الإنشاء" },
-  { src: "assets/images/site/site-image-026.jpg", name: "مشروع قيد الإنشاء", type: "قيد الإنشاء" },
-  { src: "assets/images/site/site-image-027.jpg", name: "مشروع جاري", type: "قيد الإنشاء" },
-  { src: "assets/images/site/site-image-028.jpg", name: "عزل حمام – طبقة ممبرين", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-029.jpg", name: "عزل حمام – مكتمل", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-030.jpg", name: "عزل حمام سباحة – تطبيق", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-031.jpg", name: "حمام سباحة – تبليط", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-032.jpg", name: "عزل حراري – لهب", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-033.jpg", name: "عزل سطح أبيض", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-034.jpg", name: "عزل سطح فيلا", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-035.jpg", name: "عزل سطح – تفاصيل", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-036.jpg", name: "عزل مائي – سطح", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-037.jpg", name: "عزل سطح منزل", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-038.jpg", name: "عزل حمام سباحة", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-039.jpg", name: "عزل ممبرين", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-040.jpg", name: "عزل داخلي", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-041.jpg", name: "اختبار عزل السطح – مائي", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-042.jpg", name: "عزل سطح – اختبار", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-043.jpg", name: "مشروع عزل – لقطة ميدانية", type: "أعمال عزل" },
-  { src: "assets/images/site/site-image-044.jpg", name: "حمام سباحة داخلي – مكتمل", type: "حمام سباحة" },
-  { src: "assets/images/site/site-image-045.jpg", name: "تشطيب داخلي", type: "تشطيبات" },
-  { src: "assets/images/site/site-image-046.jpg", name: "تشطيبات داخلية", type: "تشطيبات" },
-  { src: "assets/images/site/site-image-047.jpg", name: "أعمال داخلية", type: "تشطيبات" },
-  { src: "assets/images/site/site-image-048.jpg", name: "تجهيزات وتشطيبات", type: "تشطيبات" },
-  { src: "assets/images/site/site-image-049.jpg", name: "تصميم معماري", type: "تشطيبات" },
-];
-
-let visIdx = [];
-
-function updVI() {
-  visIdx = [...document.querySelectorAll(".gitem:not(.hidden)")].map(el => parseInt(el.dataset.index, 10));
-  document.getElementById("showing").textContent = visIdx.length;
-}
-
-updVI();
-
-document.querySelectorAll(".fb").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".fb").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const f = btn.dataset.f;
-    document.querySelectorAll(".gitem").forEach(item => {
-      item.classList.toggle("hidden", f !== "all" && item.dataset.type !== f);
-    });
-
-    updVI();
-  });
-});
-
-let curIdx = 0;
 const lb = document.getElementById("lb");
 const lbImg = document.getElementById("lb-img");
 const lbCap = document.getElementById("lb-cap");
 const lbCtr = document.getElementById("lb-ctr");
 
-function openLB(ri) {
-  curIdx = visIdx.indexOf(ri);
-  if (curIdx < 0) curIdx = 0;
-  showLB();
+const nameInput = document.getElementById("inputName");
+const phoneInput = document.getElementById("inputPhone");
+const messageInput = document.getElementById("inputMessage");
+const serviceSelect = document.getElementById("serviceSelect");
+const sendBtn = document.getElementById("sendBtn");
+
+const serviceOptionsByLang = {
+  ar: [
+    "اختر نوع الخدمة",
+    "بناء فيلا سكنية",
+    "مبنى تجاري أو حكومي",
+    "ترميم وصيانة",
+    "أعمال عزل مائي / حراري",
+    "تكييف مركزي",
+    "كهرباء وسباكة",
+    "تشطيبات وتجهيزات",
+    "حمام سباحة",
+    "استشارة هندسية",
+  ],
+  en: [
+    "Select a service",
+    "Residential Villa Construction",
+    "Commercial or Public Building",
+    "Renovation & Maintenance",
+    "Waterproofing / Thermal Insulation",
+    "Central HVAC",
+    "Electrical & Plumbing",
+    "Fit-Out & Finishing",
+    "Swimming Pool",
+    "Engineering Consultation",
+  ],
+};
+
+const projects = galleryItems.map((item, index) => ({
+  index,
+  src: item.querySelector("img")?.getAttribute("src") || "",
+  name: item.querySelector(".gname")?.textContent.trim() || "",
+  type: item.querySelector(".gtype")?.textContent.trim() || "",
+}));
+
+let visibleIndices = [];
+let currentLightboxIndex = 0;
+
+function currentLanguage() {
+  return body.classList.contains("lang-en") ? "en" : "ar";
+}
+
+function setHero(el, index) {
+  if (!heroBg || !heroImages[index]) return;
+  heroBg.style.backgroundImage = `url("${heroImages[index]}")`;
+  document.querySelectorAll(".hthumb").forEach((thumb, thumbIndex) => {
+    thumb.classList.toggle("active", thumbIndex === index);
+  });
+}
+
+window.setHero = setHero;
+
+function updateStaticLanguageFields(lang) {
+  document.title =
+    lang === "en"
+      ? "Mamlkah Construction | المملكة للإنشاءات"
+      : "المملكة للإنشاءات | Mamlkah Construction";
+
+  html.lang = lang;
+
+  if (nameInput) {
+    nameInput.placeholder = lang === "en" ? "Enter your full name" : "أدخل اسمك الكامل";
+  }
+
+  if (phoneInput) {
+    phoneInput.placeholder = lang === "en" ? "Enter your phone number" : "أدخل رقم هاتفك";
+  }
+
+  if (messageInput) {
+    messageInput.placeholder =
+      lang === "en" ? "Write your project details here..." : "اكتب تفاصيل مشروعك هنا...";
+  }
+
+  if (serviceSelect) {
+    [...serviceSelect.options].forEach((option, index) => {
+      option.textContent = serviceOptionsByLang[lang][index];
+    });
+  }
+}
+
+function updateGalleryCount() {
+  if (!galleryCount) return;
+  const total = projects.length;
+  const showing = visibleIndices.length;
+  galleryCount.textContent =
+    currentLanguage() === "en"
+      ? `Showing ${showing} of ${total} projects`
+      : `عرض ${showing} من أصل ${total} مشروع`;
+}
+
+function updateVisibleIndices() {
+  visibleIndices = galleryItems
+    .filter(item => !item.classList.contains("hidden"))
+    .map(item => Number(item.dataset.index));
+  updateGalleryCount();
+}
+
+function showLightbox() {
+  const project = projects[visibleIndices[currentLightboxIndex]];
+  if (!project) return;
+  lbImg.src = project.src;
+  lbCap.textContent = `${project.name} — ${project.type}`;
+  lbCtr.textContent = `${currentLightboxIndex + 1} / ${visibleIndices.length}`;
+}
+
+function openLightbox(projectIndex) {
+  currentLightboxIndex = visibleIndices.indexOf(projectIndex);
+  if (currentLightboxIndex < 0) currentLightboxIndex = 0;
+  showLightbox();
   lb.classList.add("open");
-  document.body.style.overflow = "hidden";
+  body.style.overflow = "hidden";
 }
 
-function showLB() {
-  const p = projects[visIdx[curIdx]];
-  lbImg.src = p.src;
-  lbCap.textContent = `${p.name} — ${p.type}`;
-  lbCtr.textContent = `${curIdx + 1} / ${visIdx.length}`;
-}
-
-function closeLB() {
+function closeLightbox() {
   lb.classList.remove("open");
-  document.body.style.overflow = "";
+  body.style.overflow = "";
 }
 
-document.querySelectorAll(".gitem").forEach(item => {
-  item.addEventListener("click", () => openLB(parseInt(item.dataset.index, 10)));
-});
+function applyLanguage(lang) {
+  body.classList.remove("lang-ar", "lang-en");
+  body.classList.add(lang === "en" ? "lang-en" : "lang-ar");
 
-document.getElementById("lb-close").addEventListener("click", closeLB);
-document.getElementById("lb-next").addEventListener("click", () => {
-  curIdx = (curIdx - 1 + visIdx.length) % visIdx.length;
-  showLB();
-});
-document.getElementById("lb-prev").addEventListener("click", () => {
-  curIdx = (curIdx + 1) % visIdx.length;
-  showLB();
-});
+  langButtons.forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
 
-lb.addEventListener("click", e => {
-  if (e.target === lb) closeLB();
-});
+  updateStaticLanguageFields(lang);
+  updateGalleryCount();
 
-document.addEventListener("keydown", e => {
-  if (!lb.classList.contains("open")) return;
-  if (e.key === "Escape") closeLB();
-  if (e.key === "ArrowLeft") {
-    curIdx = (curIdx + 1) % visIdx.length;
-    showLB();
+  if (lb.classList.contains("open")) {
+    showLightbox();
   }
-  if (e.key === "ArrowRight") {
-    curIdx = (curIdx - 1 + visIdx.length) % visIdx.length;
-    showLB();
+
+  localStorage.setItem("mamlkah-language", lang);
+}
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach((entry, index) => {
+      if (!entry.isIntersecting) return;
+      setTimeout(() => entry.target.classList.add("visible"), index * 65);
+      observer.unobserve(entry.target);
+    });
+  },
+  { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+);
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+window.addEventListener("scroll", () => {
+  if (!navbar) return;
+  navbar.style.background = window.scrollY > 60 ? "rgba(13,13,13,0.99)" : "rgba(13,13,13,0.96)";
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    const target = document.querySelector(link.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+});
+
+langButtons.forEach(btn => {
+  btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+});
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.f;
+    galleryItems.forEach(item => {
+      item.classList.toggle("hidden", filter !== "all" && item.dataset.type !== filter);
+    });
+
+    updateVisibleIndices();
+  });
+});
+
+galleryItems.forEach(item => {
+  item.addEventListener("click", () => openLightbox(Number(item.dataset.index)));
+});
+
+document.getElementById("lb-close")?.addEventListener("click", closeLightbox);
+document.getElementById("lb-next")?.addEventListener("click", () => {
+  currentLightboxIndex = (currentLightboxIndex - 1 + visibleIndices.length) % visibleIndices.length;
+  showLightbox();
+});
+document.getElementById("lb-prev")?.addEventListener("click", () => {
+  currentLightboxIndex = (currentLightboxIndex + 1) % visibleIndices.length;
+  showLightbox();
+});
+
+lb?.addEventListener("click", event => {
+  if (event.target === lb) {
+    closeLightbox();
   }
 });
 
-document.getElementById("sendBtn").addEventListener("click", () => {
-  const n = document.querySelector('input[type="text"]').value.trim();
-  if (!n) {
-    alert("الرجاء إدخال اسمك الكامل");
+document.addEventListener("keydown", event => {
+  if (!lb?.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") {
+    currentLightboxIndex = (currentLightboxIndex + 1) % visibleIndices.length;
+    showLightbox();
+  }
+  if (event.key === "ArrowRight") {
+    currentLightboxIndex = (currentLightboxIndex - 1 + visibleIndices.length) % visibleIndices.length;
+    showLightbox();
+  }
+});
+
+sendBtn?.addEventListener("click", () => {
+  const name = nameInput?.value.trim() || "";
+  const lang = currentLanguage();
+
+  if (!name) {
+    alert(lang === "en" ? "Please enter your full name." : "الرجاء إدخال اسمك الكامل");
     return;
   }
-  alert(`شكراً ${n}!\nسيتم التواصل معك قريباً.\n\nThank you! We will contact you shortly.`);
+
+  alert(
+    lang === "en"
+      ? `Thank you, ${name}!\nWe will contact you shortly.`
+      : `شكراً ${name}!\nسيتم التواصل معك قريباً.`
+  );
 });
+
+updateVisibleIndices();
+applyLanguage(localStorage.getItem("mamlkah-language") || "ar");
