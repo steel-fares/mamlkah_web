@@ -1,16 +1,20 @@
 :root {
+  /* Primary brand colours.  Using deep blue tones for a premium feel and
+     gold accents inspired by Omani luxury. */
   --gold: #c8a020;
   --gold2: #e8be30;
   --gold-soft: rgba(200, 160, 32, 0.15);
-  --dark: #0d0d0d;
-  --d2: #181818;
-  --d3: #111111;
-  --panel: rgba(255, 255, 255, 0.035);
-  --panel-strong: rgba(255, 255, 255, 0.05);
+  /* Dark backgrounds updated to rich navy/indigo shades to convey a
+     high‑end, trustworthy atmosphere. */
+  --dark: #0a192f;
+  --d2: #0d233a;
+  --d3: #07122b;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-strong: rgba(255, 255, 255, 0.06);
   --white: #ffffff;
-  --muted: #909090;
-  --muted-2: #b9b9b9;
-  --border: rgba(200, 160, 32, 0.14);
+  --muted: #8ca1c0;
+  --muted-2: #a3b4d0;
+  --border: rgba(200, 160, 32, 0.2);
   --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
 }
 
@@ -28,9 +32,11 @@ html {
 body {
   font-family: "Cairo", sans-serif;
   padding-top: 118px;
+  /* Background now blends gold flecks into rich navy gradients for a
+     sophisticated ambience. */
   background:
     radial-gradient(circle at top, rgba(200, 160, 32, 0.06), transparent 22%),
-    linear-gradient(180deg, #101010 0%, #0d0d0d 100%);
+    linear-gradient(180deg, var(--d2) 0%, var(--d3) 100%);
   color: var(--white);
   overflow-x: hidden;
   direction: rtl;
@@ -78,7 +84,8 @@ nav {
 }
 
 .logo-img {
-  height: 168px;
+  /* Make the logo larger for better visibility on all devices */
+  height: 200px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -305,9 +312,10 @@ body.lang-en .sdiv {
 .hero-ov {
   position: absolute;
   inset: 0;
+  /* Lighten the hero overlay so the background image remains clear on mobile */
   background:
-    linear-gradient(120deg, rgba(13, 13, 13, 0.92) 0%, rgba(13, 13, 13, 0.38) 48%, rgba(13, 13, 13, 0.74) 100%),
-    linear-gradient(180deg, rgba(13, 13, 13, 0.06) 0%, rgba(13, 13, 13, 0.28) 100%);
+    linear-gradient(120deg, rgba(13, 13, 13, 0.75) 0%, rgba(13, 13, 13, 0.28) 48%, rgba(13, 13, 13, 0.5) 100%),
+    linear-gradient(180deg, rgba(13, 13, 13, 0.04) 0%, rgba(13, 13, 13, 0.2) 100%);
 }
 
 .hero-content {
@@ -436,22 +444,25 @@ body.lang-en .sdiv {
 }
 
 .btn-gold {
-  background: var(--gold);
-  color: #111;
+  /* Brighten the primary call‑to‑action and add a glowing effect */
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #0d0d0d;
   font-weight: 800;
-  box-shadow: 0 12px 26px rgba(200, 160, 32, 0.24);
+  box-shadow: 0 0 12px rgba(200, 160, 32, 0.6), 0 8px 24px rgba(200, 160, 32, 0.3);
 }
 
 .btn-gold:hover {
-  background: var(--gold2);
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
   transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(200, 160, 32, 0.8), 0 12px 32px rgba(200, 160, 32, 0.4);
 }
 
 .btn-gh {
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  /* Secondary button with subtle glow on hover */
+  border: 1px solid rgba(200, 160, 32, 0.4);
   color: #fff;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .btn-en {
@@ -463,8 +474,9 @@ body.lang-en .sdiv {
 }
 
 .btn-gh:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--gold2);
+  color: var(--gold2);
+  box-shadow: 0 0 12px rgba(200, 160, 32, 0.6);
 }
 
 .hstrip {
@@ -1040,8 +1052,11 @@ body.lang-en .sdiv {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  /* Adaptive columns: automatically adjust number of cards per row for a more
+     spacious, premium portfolio presentation. Each card will be at least
+     260px wide on larger screens. */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .gitem {
@@ -1913,5 +1928,624 @@ footer {
   #lb-next {
     padding: 6px 14px;
     font-size: 32px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE ENHANCEMENTS + GLOWING BUTTONS
+   ─ Appended override block ─
+═══════════════════════════════════════════ */
+
+/* ── GLOW ANIMATIONS ── */
+@keyframes goldGlow {
+  0%, 100% {
+    box-shadow:
+      0 12px 28px rgba(200,160,32,0.30),
+      0 0 20px rgba(200,160,32,0.14),
+      inset 0 1px 0 rgba(255,255,255,0.14);
+  }
+  50% {
+    box-shadow:
+      0 14px 40px rgba(200,160,32,0.60),
+      0 0 50px rgba(200,160,32,0.32),
+      inset 0 1px 0 rgba(255,255,255,0.20);
+  }
+}
+
+@keyframes goldGlowSoft {
+  0%, 100% { box-shadow: 0 8px 22px rgba(200,160,32,0.22), 0 0 14px rgba(200,160,32,0.10); }
+  50%       { box-shadow: 0 10px 30px rgba(200,160,32,0.45), 0 0 32px rgba(200,160,32,0.22); }
+}
+
+/* Main CTA buttons glow */
+.btn-gold {
+  animation: goldGlow 2.6s ease-in-out infinite;
+}
+.btn-gold:hover {
+  animation: none;
+  box-shadow: 0 16px 44px rgba(200,160,32,0.70), 0 0 60px rgba(200,160,32,0.38);
+}
+
+/* Nav CTA glow */
+.nav-cta {
+  animation: goldGlowSoft 2.6s ease-in-out infinite;
+}
+.nav-cta:hover {
+  animation: none;
+  box-shadow: 0 10px 30px rgba(200,160,32,0.55), 0 0 40px rgba(200,160,32,0.28) !important;
+}
+
+/* Contact submit button glow */
+.csub {
+  animation: goldGlow 2.6s ease-in-out 0.5s infinite;
+}
+.csub:hover {
+  animation: none;
+  box-shadow: 0 14px 38px rgba(200,160,32,0.65), 0 0 50px rgba(200,160,32,0.34);
+}
+
+/* Active filter glow */
+.fb.active {
+  box-shadow: 0 6px 18px rgba(200,160,32,0.38), 0 0 22px rgba(200,160,32,0.18);
+}
+
+/* Active lang button glow */
+.lang-btn.active {
+  box-shadow: 0 6px 16px rgba(200,160,32,0.32), 0 0 18px rgba(200,160,32,0.14) !important;
+}
+
+/* Ghost button hover glow */
+.btn-gh:hover {
+  box-shadow: 0 8px 22px rgba(200,160,32,0.22), 0 0 24px rgba(200,160,32,0.12);
+}
+
+/* ── LOGO ALWAYS PROMINENT ── */
+.logo-img {
+  filter: drop-shadow(0 0 18px rgba(200,160,32,0.22)) drop-shadow(0 10px 24px rgba(0,0,0,0.38));
+}
+
+/* ── GALLERY: ALWAYS 2 COLS ON MOBILE ── */
+@media (max-width: 560px) {
+  /* Fix gallery to 2 cols (overrides 1-col rule) */
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  /* Fix services to 2 cols (overrides 1-col rule) */
+  .svcg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  /* Fix stats bar to 2 cols (overrides column rule) */
+  .sbi {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .sb {
+    min-height: 100px;
+    padding: 16px 12px;
+    border-radius: 14px;
+  }
+
+  .sb .n {
+    font-size: 34px;
+  }
+
+  /* Info row: 2 cols not 1 */
+  .irow,
+  .irow4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  /* Service card compact */
+  .svci {
+    height: 130px;
+  }
+
+  .svcb {
+    padding: 12px 12px 14px;
+    min-height: auto;
+  }
+
+  .svcb h4 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .svce {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .svcb p {
+    font-size: 11.5px;
+    line-height: 1.65;
+  }
+
+  /* Gallery labels */
+  .gname {
+    font-size: 10.5px;
+  }
+
+  .gtype {
+    font-size: 9.5px;
+  }
+
+  /* Gallery item border-radius smaller */
+  .gitem {
+    border-radius: 10px;
+  }
+
+  /* Vision/Mission: stack nicely */
+  .vmg {
+    grid-template-columns: 1fr !important;
+    gap: 2px;
+  }
+
+  .vmc {
+    padding: 36px 20px;
+  }
+
+  /* Sections less vertical padding */
+  #about, #services, #projects, #partners, #admin, #contact {
+    padding: 72px 0 !important;
+  }
+
+  /* Section header smaller */
+  .sh {
+    margin-bottom: 28px;
+  }
+
+  .sh h2 {
+    font-size: 26px !important;
+  }
+
+  /* Partner card */
+  .partc {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Footer */
+  .fw {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+}
+
+/* ── NAV MOBILE (≤960px) IMPROVEMENTS ── */
+@media (max-width: 960px) {
+  nav {
+    padding: 10px 16px 12px;
+    gap: 8px;
+  }
+
+  /* Bigger logo on mobile */
+  .logo-img {
+    height: 76px;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Lang switch align right */
+  .lang-switch {
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .lang-btn {
+    min-width: 80px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  /* Nav links: bigger tap targets */
+  .nav-links {
+    gap: 4px;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a {
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(200,160,32,0.08);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover {
+    background: rgba(200,160,32,0.1);
+    border-color: rgba(200,160,32,0.22);
+  }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    border: none !important;
+    min-width: 110px !important;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100svh;
+    align-items: flex-start;
+  }
+
+  .hero-content {
+    padding: 80px 20px 200px;
+  }
+
+  /* Hero stats bar */
+  .hstats {
+    gap: clamp(20px, 5vw, 60px);
+    padding: 14px 16px;
+  }
+
+  .stt .n {
+    font-size: 28px;
+  }
+
+  .stt .l {
+    font-size: 11px;
+  }
+
+  /* Hero thumbnails */
+  .hstrip {
+    bottom: 112px;
+    left: 16px;
+    right: 16px;
+    justify-content: center;
+  }
+
+  .hthumb {
+    width: 78px;
+    height: 54px;
+  }
+
+  /* Services: 2 cols */
+  .svcg {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  /* Stats bar: 2 cols */
+  .sbi {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: 100%;
+    gap: 14px;
+  }
+
+  .sb {
+    min-height: 112px;
+  }
+
+  /* Gallery: 2 cols */
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .gitem {
+    border-radius: 12px;
+  }
+
+  /* Company image */
+  .amain {
+    height: 380px;
+  }
+
+  /* Admin grid */
+  .adg {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Contact grid */
+  .ctg {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* About grid */
+  .ag {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* irow4 to 2 cols */
+  .irow4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* Partners */
+  .partg {
+    grid-template-columns: 1fr;
+  }
+
+  /* Section titles */
+  .sh h2 {
+    font-size: clamp(26px, 7vw, 42px);
+  }
+}
+
+/* ── HERO BUTTONS: always full-width and glowing on mobile ── */
+@media (max-width: 768px) {
+  .hero-btns {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn-gold,
+  .btn-gh {
+    width: 100%;
+    min-width: 0;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  /* Bigger hero text on mobile */
+  .hero h1 {
+    font-size: clamp(36px, 11vw, 58px);
+    margin-bottom: 12px;
+  }
+
+  .hero-p {
+    font-size: 15px;
+    line-height: 1.85;
+    margin-bottom: 22px;
+  }
+}
+
+/* ── CONTACT FORM MOBILE ── */
+@media (max-width: 960px) {
+  .cform {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .fg {
+    margin-bottom: 14px;
+  }
+
+  .fg input,
+  .fg select,
+  .fg textarea {
+    font-size: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+
+  .csub {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+}
+
+/* ── FOOTER MOBILE ── */
+@media (max-width: 960px) {
+  .fw {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-logo {
+    width: min(220px, 100%);
+  }
+
+  .fbot {
+    text-align: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* ── LIGHTBOX MOBILE ── */
+@media (max-width: 560px) {
+  #lb-img {
+    max-width: 96vw;
+    max-height: 72vh;
+  }
+
+  #lb-prev {
+    right: 6px;
+    padding: 5px 12px;
+    font-size: 28px;
+    border-radius: 8px;
+  }
+
+  #lb-next {
+    left: 6px;
+    padding: 5px 12px;
+    font-size: 28px;
+    border-radius: 8px;
+  }
+
+  #lb-close {
+    top: 12px;
+    right: 14px;
+    font-size: 28px;
+  }
+
+  #lb-cap {
+    font-size: 12px;
+    padding: 0 16px;
+    text-align: center;
+  }
+}
+
+/* Custom title inserted between service categories. It spans across all grid columns
+   and provides a clear separation between construction and technical services. */
+.service-group-title {
+  grid-column: 1 / -1;
+  font-size: clamp(22px, 3vw, 32px);
+  margin: 40px 0 20px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--gold2);
+}
+
+/* Ensure the header logo remains large on all viewports */
+nav .logo-img {
+  height: 200px !important;
+  width: auto;
+}
+@media (max-width: 768px) {
+  nav .logo-img {
+    height: 140px !important;
+  }
+}
+
+/* ── BODY PADDING: reduce on mobile so nav doesn't eat too much space ── */
+@media (max-width: 960px) {
+  body {
+    padding-top: 132px;
+  }
+
+  html {
+    scroll-padding-top: 142px;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    padding-top: 124px;
+  }
+
+  html {
+    scroll-padding-top: 134px;
+  }
+}
+
+/* ───────────────────── TRUST SECTION STYLES ───────────────────── */
+/* Container for trust metrics */
+.trust-block {
+  padding: 80px 0;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  justify-items: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.trust-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.trust-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.3);
+}
+
+.ti-icon {
+  font-size: 36px;
+  margin-bottom: 14px;
+  color: var(--gold2);
+}
+.ti-number {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.ti-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.ti-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .trust-block {
+    padding: 60px 0;
+  }
+  .ti-number {
+    font-size: 34px;
+  }
+  .ti-title {
+    font-size: 16px;
+  }
+  .ti-text {
+    font-size: 13px;
+  }
+}
+
+/* ───────────────────── FLOATING ACTION BUTTONS ───────────────────── */
+.fab-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fab-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 26px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fab-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Specific colours for each action */
+.fab-call {
+  background: var(--gold);
+  color: var(--dark);
+}
+.fab-whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+.fab-quote {
+  background: var(--d2);
+  border: 2px solid var(--gold2);
+  color: var(--gold2);
+}
+
+@media (min-width: 960px) {
+  /* Keep buttons visible on larger screens but reduce size */
+  .fab-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
   }
 }
